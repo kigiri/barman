@@ -3,71 +3,183 @@
 <head>
   <title>barman</title>
   <style type="text/css">
-    button {
-      width: 36px;
-      height: 36px;
-      margin: 1px;
-    }
     html {
       background: #666;
     }
     .block {
       background: #555;
-      float: left;
       margin: 12px;
       padding: 2px;
+      float: left;
     }
-    .wow-icon, button {
-      width: 36px;
-      height: 36px;
+    .btn {
+      overflow: hidden;
+    }
+    .wow-icon, .btn {
       border: 1px solid black;
+      width: 36px;
+      min-height: 36px;
+      max-height: 36px;
       margin: 2px;
-      display: inline-block;
+      background: rgba(0, 0, 0, 0.7);
+      display: block;
+      float: left;
+    }
+    .btn:hover {
+      max-height: none;
+      z-index: 999;
+    }
+    .wow-icon:hover {
+      border-color: #9482C9;
+    }
+    .wow-icon {
       font-size: 0px !important;
       color: transparent !important;
       text-indent: -9999999px !important;
     }
+    .row {
+      clear: both;
+    }
+    .btn .wow-icon {
+      margin: -1px;
+    }
+
   </style>
 </head>
 <body>
-<a href="#" rel="item=2828"></a>
 <div id="pad" class="block">
-  <div id="pad-row0"><button id="m"></button><button id="y"></button><button id=","></button><button id="."></button><button id="'"></button></div><div id="pad-row1"><button id="k"></button><button id="q"></button><button id="w"></button><button id="d"></button><button id="f"></button></div><div id="pad-row2"><button id="t"></button><button id="a"></button><button id="s"></button><button id="e"></button><button id="r"></button></div><div id="pad-row3"><button id="b"></button><button id="z"></button><button id="x"></button><button id="c"></button><button id="v"></button></div></div>
-<div id="wheel" class="block"><button id="wu"></button><button id="wc"></button><button id="wd"></button></div>
+  <div class="row"><div class="btn" id="m"></div><div class="btn" id="y"></div><div class="btn" id=","></div><div class="btn" id="."></div><div class="btn" id="'"></div></div><div  class="row"><div class="btn" id="k"></div><div class="btn" id="q"></div><div class="btn" id="w"></div><div class="btn" id="d"></div><div class="btn" id="f"></div></div><div class="row"><div class="btn" id="t"></div><div class="btn" id="a"></div><div class="btn" id="s"></div><div class="btn" id="e"></div><div class="btn" id="r"></div></div><div class="row"><div class="btn" id="b"></div><div class="btn" id="z"></div><div class="btn" id="x"></div><div class="btn" id="c"></div><div class="btn" id="v"></div></div></div>
+<div id="wheel" class="block"><div class="btn" id="wu"></div><div class="btn" id="wc"></div><div class="btn" id="wd"></div></div>
 <div id="naga" class="block">
-  <div id="naga-row1"><button id="1"></button><button id="2"></button><button id="3"></button></div><div id="naga-row2"><button id="4"></button><button id="5"></button><button id="6"></button></div><div id="naga-row3"><button id="7"></button><button id="8"></button><button id="9"></button></div><div id="naga-row4"><button id="0"></button><button id="-"></button><button id="="></button></div>
+  <div class="row"><div class="btn" id="1"></div><div class="btn" id="2"></div><div class="btn" id="3"></div></div><div class="row"><div class="btn" id="4"></div><div class="btn" id="5"></div><div class="btn" id="6"></div></div><div class="row"><div class="btn" id="7"></div><div class="btn" id="8"></div><div class="btn" id="9"></div></div><div class="row"><div class="btn" id="0"></div><div class="btn" id="-"></div><div class="btn" id="="></div></div>
 </div>
 <div id="spell-list"></div>
 <script>
 'use strict'
 
-const tDef = 'TYPE_DEF'
-
 const spellListDiv = document.getElementById('spell-list')
 
 const spellList = {
   druid: [
-    { id: 22812, gcd: false, cooldown: 1.5*60, type: tDef },
-    { id: 61336, gcd: false, cooldown: 4*60, type: tDef },
-    { id: 22842, gcd: false, cooldown: 20, type: tDef, cost: 10 },
-    { id: 204066, gcd: true, cooldown: 1.5*60, type: tDef },
-    { id: 200851, gcd: false, cooldown: 1.5*60, type: tDef },
-    { id: 192083, gcd: false, cooldown: 0.5, type: tDef, cost: 45 },
-    { id: 192081, gcd: false, cooldown: 0.5, type: tDef, cost: 45 },
+    { id: 22812, type: 'balance restoration feral guardian no-gcd' },
+    { id: 61336, type: 'feral guardian no-gcd' },
+    { id: 22842, type: 'guardian talented no-gcd cost' },
+    { id: 204066, type: '' },
+    { id: 200851, type: '' },
+    { id: 192083, type: '' },
+    { id: 192081, type: '' },
+    { id: 88749 },
+    { id: 208683 },
+    { id: 8921 },
+    { id: 1822 },
+    { id: 20484 },
+    { id: 29166 },
+    { id: 102342 },
+    { id: 33763 },
+    { id: 5215 },
+    { id: 8936 },
+    { id: 5185 },
+    { id: 774 },
+    { id: 1079 },
+    { id: 5221 },
+    { id: 5176 },
+    { id: 93402 },
+    { id: 18562 },
+    { id: 213764 },
+    { id: 740 },
+    { id: 783 },
+    { id: 1850 },
+    { id: 102280 },
+    { id: 145205 },
+    { id: 339 },
+    { id: 22568 },
+    { id: 202767 },
+    { id: 2782 },
+    { id: 50769 },
+    { id: 24858 },
+    { id: 78675 },
+    { id: 191034 },
+    { id: 78674 },
+    { id: 132469 },
+    { id: 194223 },
+    { id: 210722 },
+    { id: 5487 },
+    { id: 106951 },
+    { id: 768 },
+    { id: 22570 },
+    { id: 52610 },
+    { id: 77764 },
+    { id: 5217 },
+    { id: 106830 },
+    { id: 106785 },
+    { id: 106839 },
+    { id: 99 },
+    { id: 6807 },
+    { id: 33917 },
+    { id: 202246 },
   ]
 }
 
+const url = _ => _
+
+const dragstartHandler = ev => {
+  const img = new Image()
+
+  img.src = eval(ev.currentTarget.style.backgroundImage)
+  ev.dataTransfer.setDragImage(img, 18, 18)
+  ev.target.style.borderColor = "#00FF96"
+  ev.dataTransfer.setData("targetId", ev.target.id)
+  ev.effectAllowed = "moveCopy"
+}
+
+const dragoverHandler = ev => false
+
+const dragenterHandler = ev =>
+  ev.currentTarget.style.borderColor = '#FF7D0A'
+
+const dragleaveHandler = ev =>
+  ev.currentTarget.style.borderColor = 'black'
+
+const dragendHandler = ev => {
+  ev.target.style.borderColor = "black"
+  ev.dataTransfer.clearData()
+}
+
+const clickHandler = ev => {
+  if (ev.target.tagName !== 'A') return
+  if (ev.target.parentNode === spellListDiv) return
+  spellListDiv.appendChild(ev.target)
+}
 
 const makeIcon = spell => {
   const a = document.createElement('a')
   a.id = 'wow-spell-'+ spell.id
-  a.href = '#'
+  a.href = '#'+ spell.id
   a.rel = 'spell='+ spell.id
-
+  a.className = 'wow-icon '+ (spell.type || '')
+  a.draggable = true
+  a.ondragstart = dragstartHandler
+  a.ondragend = dragendHandler
   spellListDiv.appendChild(a)
 }
 
 spellList.druid.forEach(makeIcon)
+
+Array.from(document.getElementsByClassName('btn')).forEach(btn => {
+  btn.ondrop = ev => {
+    const id = ev.dataTransfer.getData("targetId")
+    dragleaveHandler(ev)
+
+    btn.appendChild(document.getElementById(id))
+
+    ev.preventDefault()
+  }
+
+  btn.ondragover = dragoverHandler
+  btn.ondragenter = dragenterHandler
+  btn.ondragleave = dragleaveHandler
+  btn.onclick = clickHandler
+})
 
 </script>
 <script>
@@ -656,17 +768,8 @@ if (typeof $WowheadPower == "undefined") {
             }, 5);
             return true
           }
-          if (wowhead_tooltips.renamelinks) {
-            eval("t.innerHTML = '<span>' + data.name_" + LOCALES[locale] + " + '</span>';")
-          }
           if (wowhead_tooltips.iconizelinks && (type == TYPE_ITEM || type == TYPE_ACHIEVEMENT || type == TYPE_SPELL) && data.icon) {
-            t.classList.add("wow-icon");
             t.style.background = "url(" + (document.location.protocol != "https:" ? "http:" : document.location.protocol) + "//wow.zamimg.com/images/wow/icons/medium/" + data.icon.toLocaleLowerCase() + ".jpg) left center no-repeat"
-          }
-          if (wowhead_tooltips.colorlinks) {
-            if (type == TYPE_ITEM) {
-              t.className += " q" + data.quality
-            } else {}
           }
         };
         timeout(t);
@@ -962,7 +1065,7 @@ if (typeof $WowheadPower == "undefined") {
           normal: 0,
           golden: 0
         };
-        var comphtml = '<div class="q hearthhead-my-collection">' + window.LANG.lvmycollection + window.LANG.colon + '<span class="hearthhead-card-normal q' + (ccomp.normal < 2 ? ccomp.normal : "") + '">' + ccomp.normal + '</span> <span class="hearthhead-card-gold q' + (ccomp.golden < 2 ? ccomp.golden : "") + '">' + ccomp.golden + "</span></div>";
+        var comphtml = '<div class="btn" class="q hearthhead-my-collection">' + window.LANG.lvmycollection + window.LANG.colon + '<span class="hearthhead-card-normal q' + (ccomp.normal < 2 ? ccomp.normal : "") + '">' + ccomp.normal + '</span> <span class="hearthhead-card-gold q' + (ccomp.golden < 2 ? ccomp.golden : "") + '">' + ccomp.golden + "</span></div>";
         if (html.indexOf("hearthhead-tooltip-inner") > 0) {
           html = html.replace(/<\/td>/, comphtml + "</td>")
         } else {
@@ -1004,6 +1107,7 @@ if (typeof $WowheadPower == "undefined") {
       }
       switch (mode) {
       case 2:
+        $WH.Tooltip.setIcon(null);
         $WH.Tooltip.showInScreen(currentA, html, null, html2, image, imageClass, icon);
         break;
       case 1:
@@ -1011,11 +1115,11 @@ if (typeof $WowheadPower == "undefined") {
         $WH.Tooltip.show(currentA, html, null, null, null, html2, image, imageClass);
         break;
       default:
-        $WH.Tooltip.setIcon(icon);
+        $WH.Tooltip.setIcon(null);
         $WH.Tooltip.showAtXY(html, cursorX, cursorY, CURSOR_HSPACE, CURSOR_VSPACE, html2, image, imageClass)
       }
       if (isRemote && $WH.Tooltip.logo) {
-        $WH.Tooltip.logo.style.display = (showLogo ? "block" : "none")
+        $WH.Tooltip.logo.style.display = "none"
       }
     }
     function showLoading(type, id, locale) {
